@@ -73,12 +73,12 @@ Antarmuka pengguna dirancang untuk mempermudah belanja online. Fitur utama melip
 ---
 
 
-### ** Fitur Unggulan :**
+### **Fitur Unggulan :**
 
  Penggunaan API google console
 
 - Map Tracking
 - Email Send
-- OTP VERIFICATION proces\
+- OTP VERIFICATION proces
 
 ---
