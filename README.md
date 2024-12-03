@@ -71,3 +71,14 @@ Antarmuka pengguna dirancang untuk mempermudah belanja online. Fitur utama melip
 ![Keranjang](Assets/Perkembangan/Keranjang.png)
 
 ---
+
+
+### ** Fitur Unggulan :**
+
+ Penggunaan API google console
+
+- Map Tracking
+- Email Send
+- OTP VERIFICATION proces\
+
+---
