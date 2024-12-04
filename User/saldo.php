@@ -31,15 +31,7 @@ include '../php/user/saldo.php';
         <input type="text" name="sandi" class="input-field" placeholder="Masukkan sandi" required>
 
         <label class="label-judul" for="newBalance">Isi Saldo:</label>
-        <select name="newBalance" class="input-field" required>
-            <option value="">Pilih Saldo</option>
-            <option value="10000">Rp 10.000</option>
-            <option value="50000">Rp 50.000</option>
-            <option value="100000">Rp 100.000</option>
-            <option value="500000">Rp 500.000</option>
-            <option value="1000000">Rp 1.000.000</option>
-            <option value="10000000">Rp 10.000.000</option>
-        </select>
+        <input type="text" name="newBalance" class="input-field" placeholder="Minimal 10.000.00" min="10000" required>
 
         <button type="submit" name="updateBalance" class="submit-button">ISI</button>
     </form>

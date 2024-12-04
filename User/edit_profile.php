@@ -39,6 +39,12 @@ include '../php/user/edit-profil.php';
                         </div>
 
                         <div class="display-form">
+                            <i class="fa-solid fa-user input-icon"></i>
+                            <input type="text" name="sandi" value="<?php echo $user['sandi']; ?>" class="input-form" required>
+                        </div>
+
+
+                        <div class="display-form">
                             <i class="fa-solid fa-envelope input-icon"></i>
                             <input type="email" name="email" value="<?php echo $user['email']; ?>" class="input-form" required>
                         </div>

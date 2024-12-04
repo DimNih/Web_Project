@@ -21,6 +21,7 @@ $user = mysqli_fetch_assoc($result);
 mysqli_stmt_close($stmt);
 
 if (isset($_POST['UPDATE'])) {
+    $sandi = mysqli_real_escape_string($koneksi, $_POST['sandi'] ?? '');
     $nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
     $email = mysqli_real_escape_string($koneksi, $_POST['email']);
     $nomer = mysqli_real_escape_string($koneksi, $_POST['nomer']);
@@ -45,9 +46,10 @@ if (isset($_POST['UPDATE'])) {
     }
 
     if (!empty($email) && !empty($nomer)) {
-        $sqlUpdate = "UPDATE user SET nama = ?, email = ?, nomer = ?, alamat = ?, profile_picture = ? WHERE id = ?";
+        $sqlUpdate = "UPDATE user SET nama = ?,sandi = ?, email = ?, nomer = ?, alamat = ?, profile_picture = ? WHERE id = ?";
         $stmtUpdate = mysqli_prepare($koneksi, $sqlUpdate);
-        mysqli_stmt_bind_param($stmtUpdate, 'sssssi', $nama, $email, $nomer, $alamatBaru, $fileName, $user_id);
+        mysqli_stmt_bind_param($stmtUpdate, 'ssssssi', $nama, $sandi, $email, $nomer, $alamatBaru, $fileName, $user_id);
+
 
         if (mysqli_stmt_execute($stmtUpdate)) {
             $_SESSION['notification'] = "Profil berhasil diperbarui.";
