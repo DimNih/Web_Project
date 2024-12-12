@@ -1,13 +1,15 @@
 <?php
+ // Koneksi >>
+ include '../connection/koneksi.php'; 
 session_start(); // Start Sesi Admin
 
 $admin_name = "Guest"; 
 
+
+
 if (isset($_SESSION['admin_id'])) {
     $admin_id = $_SESSION['admin_id'];
-    // Koneksi >>
-    include '../connection/koneksi.php'; 
-
+   
     // Ambill
     $adminQuery = "SELECT nama FROM admin WHERE id_admin = '$admin_id'";
     $adminResult = mysqli_query($koneksi, $adminQuery);
@@ -22,6 +24,7 @@ if (isset($_SESSION['admin_id'])) {
     exit;
 }
 
+// proses  
 if (isset($_POST['submit'])) {
     
     $id_produk = $_POST['id_produk'];
@@ -29,10 +32,15 @@ if (isset($_POST['submit'])) {
     $jumlah = $_POST['jumlah'];
     $tujuan_keluar = $_POST['tujuan_keluar'];
 
+
+    // proses insert 
     $insert_query = "INSERT INTO barang_keluar (id_produk, tanggal_keluar, jumlah, tujuan_keluar) 
                      VALUES ('$id_produk', '$tanggal_keluar', '$jumlah', '$tujuan_keluar')";
     $insert_result = mysqli_query($koneksi, $insert_query);
 
+
+
+    // proses update //
     if ($insert_result) {
         $update_query = "UPDATE penjualan SET jumlah = jumlah - $jumlah WHERE id = '$id_produk'";
         $update_result = mysqli_query($koneksi, $update_query);
@@ -49,7 +57,8 @@ if (isset($_POST['submit'])) {
         $_SESSION['alert_message'] = 'Gagal menambah data barang keluar.';
     }
 
-    // Refres page
+
+    // redirec
     header("Location: " . $_SERVER['PHP_SELF']);
     exit;
 }
@@ -60,6 +69,9 @@ $result_produk = mysqli_query($koneksi, $query_produk);
 
 $produk_options = ""; // Buat Variabel isi kosong
 
+
+
+// proses loop id dan nama //
 if ($result_produk) {
     while ($row = mysqli_fetch_assoc($result_produk)) {
         $produk_options .= "<option value='" . $row['id'] . "'>" . $row['nama_produk'] . "</option>";

@@ -11,6 +11,8 @@ include '../php/user/edit-profil.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profil</title>
     <link rel="stylesheet" href="../style/user/login.css">
+
+    <link rel="icon" type="image/x-icon" href="../Assets/logo/Logo-web/ambashop.png" sizes="16x16">
 </head>
 <body>
     <div class="container">
@@ -65,11 +67,10 @@ include '../php/user/edit-profil.php';
             </div>
 
             <div class="card-footer">
-                <p class="text-sign">Lihat Yang Lain</p>
                 <div class="card-footer-with">
                     <button class="card-footer-logo">
-                        <a href="../database/data.php"> 
-                            <img src="../Assets/logo/database.png" alt="DataBaseLogo">
+                        <a href="contact.php"> 
+                            <img src="../Assets/logo/back.png" alt="Logo">
                         </a>
                     </button>
                 </div>

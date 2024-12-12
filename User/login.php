@@ -8,14 +8,19 @@ include '../php/user/login.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login & Register</title>
-    <link rel="stylesheet" href="../style/user/login.css">
+    <link rel="stylesheet" href="../style/user/login.css?v=2">
+
+
+    <link rel="icon" type="image/x-icon" href="../Assets/logo/Logo-web/ambashop.png" sizes="16x16">
 </head>
 
 <body>
+
+
     <div class="container">
         <div class="card-login">
             <div align="center">
-                <img src="../Assets/logo/logo.png" alt="logo">
+                <img src="../Assets/logo/produk.png" alt="logo">
             </div>
             <div class="card-title">
                 <h2>Masuk atau Daftar</h2>
@@ -37,15 +42,22 @@ include '../php/user/login.php';
                             <i class="fa-solid fa-eye toggle-password" onclick="togglePassword()"></i>
                         </div>
                         <button type="submit" name="MASUK" class="button-form">Masuk</button>
-                        <p class="text-signup">Belum punya akun? <a href="#" onclick="showRegister()">Daftar</a></p>
+                        <p class="text-signup">Belum punya akun? <a href="#" class="text bg" onclick="showRegister()">Daftar</a></p>
                     </form>
                 </div>
                 <div class="card-body-form hidden" id="register-form">
                     <form action="" method="POST"  enctype="multipart/form-data">
-<div class="display-form">
-        <i class="fa-solid fa-image input-icon"></i>
-        <input type="file" name="profile_picture" class="input-form" accept="image/*" required>
-    </div>
+      
+      
+                    <div class="display-form">
+    <label class="circle-label">
+        <img id="preview-image" src="https://via.placeholder.com/120" alt="Preview">
+        <input type="file" name="profile_picture" class="input-gambar" accept="image/*" onchange="previewImage(event)">
+    </label>
+</div>
+
+
+
 
         <div class="display-form">
                             <i class="fa-solid fa-envelope input-icon"></i>
@@ -72,7 +84,7 @@ include '../php/user/login.php';
                             <input type="text" name="alamat" placeholder="Alamat (Opsional)" class="input-form">
                         </div>
                         <button type="submit" name="REGISTER" class="button-form">Daftar Sekarang</button>
-                        <p class="text-sign">Sudah punya akun? <a href="#" onclick="showLogin()">Login</a></p>
+                        <p class="text-sign">Sudah punya akun? <a class="text" href="#" onclick="showLogin()">Login</a></p>
                     </form>
                 </div>
             </div>
@@ -92,7 +104,7 @@ include '../php/user/login.php';
                         </a>
                     </button>
                     <button class="card-footer-logo">
-                        <a href="https://github.com/logout">
+                        <a href="../php/user/github.php">
                         <img src="../Assets/logo/github.png" alt="githubLogo">
                         </a>
                     </button>
@@ -102,6 +114,8 @@ include '../php/user/login.php';
     </div>
 
 <script src="../js/login/login.js"></script>
+
+<script src="../js/login/imgSel.js"></script>
 
 </body>
 </html> 

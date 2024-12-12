@@ -1,58 +1,73 @@
 <?php
-require '../../vendor/autoload.php';
-use Twilio\Rest\Client;
-
 session_start();
-include '../../connection/koneksi.php';
 
-$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-$dotenv->load();
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['message'] = "Anda harus login terlebih dahulu";
+    $_SESSION['icon'] = "warning";
+    header("Location: ../User/login.php");
+    exit;
+}
 
-$sid = $_ENV['TWILIO_ACCOUNT_SID'];
-$token = $_ENV['TWILIO_AUTH_TOKEN'];
-$twilioNumber = $_ENV['TWILIO_PHONE_NUMBER'];
+$userId = $_SESSION['user_id'];
 
-if (isset($_SESSION['user_id'])) {
-    $userId = $_SESSION['user_id'];
+include('../../connection/koneksi.php');
 
-    $queryUser = "SELECT nomer FROM user WHERE id='$userId'";
-    $resultUser = mysqli_query($koneksi, $queryUser);
-    if ($resultUser && mysqli_num_rows($resultUser) > 0) {
-        $rowUser = mysqli_fetch_assoc($resultUser);
-        $userPhone = $rowUser['nomer'];
+$query = "SELECT email FROM user WHERE id='$userId'";
+$result = mysqli_query($koneksi, $query);
 
-        $formattedPhone = '+62' . ltrim($userPhone, '0');
-        $otp = rand(100000, 999999);
+if ($result && mysqli_num_rows($result) > 0) {
+    $row = mysqli_fetch_assoc($result);
+    $_SESSION['email'] = $row['email']; 
+} else {
+    $_SESSION['message'] = "Data pengguna tidak ditemukan.";
+    $_SESSION['icon'] = "error";
+    header("Location: login.php");
+    exit;
+}
 
-        $client = new Client($sid, $token);
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+require '../../vendor/autoload.php';
 
-        try {
-            $message = $client->messages->create(
-                'whatsapp:' . $formattedPhone, 
-                [
-                    'from' => $twilioNumber, 
-                    'body' => 'OTP Anda untuk menyelesaikan pembelian adalah: ' . $otp
-                ]
-            );
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $userEmail = $_SESSION['email']; 
 
-            $_SESSION['otp'] = $otp;
-            $_SESSION['otp_time'] = time();
+    if (empty($userEmail)) {
+        echo "Email tidak ditemukan.";
+        exit;
+    }
 
-            echo '<script>
-                    Swal.fire({
-                        title: "OTP Terkirim",
-                        text: "OTP telah dikirim ke WhatsApp Anda. Silakan cek pesan Anda.",
-                        icon: "success",
-                        confirmButtonText: "OK"
-                    }).then((result) => {
-                        if (result.isConfirmed) {
-                            window.location.href = "../User/checkout.php";
-                        }
-                    });
-                  </script>';
-        } catch (Exception $e) {
-            echo 'Error mengirim OTP melalui WhatsApp: ' . $e->getMessage();
+    $otp = rand(100000, 999999);
+
+    $_SESSION['otp'] = $otp;
+    $_SESSION['otp_time'] = time();
+
+    $mail = new PHPMailer(true);
+
+    try {
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = 'dd0613987@gmail.com'; 
+        $mail->Password = 'tcfu zsii xzry djxw'; 
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port = 587;
+
+        $mail->setFrom('dd0613987@gmail.com', 'Penjualan.net');
+        $mail->addAddress($userEmail);  
+        $mail->Subject = 'OTP Verifikasi Pembelian';
+        $mail->Body    = "OTP Anda untuk verifikasi pembelian adalah: $otp";
+
+        if ($mail->send()) {
+            echo "OTP berhasil dikirim ke email Anda.";
+            header('Location: .php');
+            exit;
+        } else {
+            echo "Gagal mengirim OTP. Silakan coba lagi.";
         }
+        
+    } catch (Exception $e) {
+        echo "Gagal mengirim email. Error: {$mail->ErrorInfo}";
     }
 }
 ?>

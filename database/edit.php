@@ -14,7 +14,7 @@ include '../php/data/edit.php';
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Admin</title>
-        <link href="../style/database/database.css?v=2" rel="stylesheet" />
+        <link href="../style/database/database.css?v=3" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -103,6 +103,8 @@ include '../php/data/edit.php';
                                         <nav class="sb-sidenav-menu-nested nav">
                                             <a class="nav-link" href="login-admin.php">Login</a>
                                             <a class="nav-link" href="password.html">Forgot Password</a>
+                                            <a class="nav-link" href="service.php">Service Customer</a>
+                                        
                                         </nav>
                                 </nav>
                                 </div>
@@ -115,6 +117,8 @@ include '../php/data/edit.php';
                     </div>
                 </nav>
             </div>
+
+   
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid">

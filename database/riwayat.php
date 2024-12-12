@@ -94,6 +94,8 @@ include '../php/data/riwayat.php';
                                         <nav class="sb-sidenav-menu-nested nav">
                                             <a class="nav-link" href="login-admin.php">Login</a>
                                             <a class="nav-link" href="password.html">Forgot Password</a>
+                                            <a class="nav-link" href="service.php">Service Customer</a>
+                                        
                                         </nav>
                                 </nav>
                                 </div>

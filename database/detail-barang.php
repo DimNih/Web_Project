@@ -7,13 +7,13 @@ include '../php/data/detail-barang.php';
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="utf-8" />
+        <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Admin</title>
-        <link href="../style/database/database.css?v=1" rel="stylesheet" />
+        <link href="../style/database/database.css?v=3" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -92,6 +92,8 @@ include '../php/data/detail-barang.php';
                                         <nav class="sb-sidenav-menu-nested nav">
                                             <a class="nav-link" href="login-admin.php">Login</a>
                                             <a class="nav-link" href="password.html">Forgot Password</a>
+                                            <a class="nav-link" href="service.php">Service Customer</a>
+                                        
                                         </nav>
                                 </nav>
                                 </div>

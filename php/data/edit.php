@@ -32,7 +32,7 @@ if (isset($_GET['id'])) {
         echo "Error fetching data for ID: $id";
         exit;
     }
-
+// submit //
     if (isset($_POST['submit'])) {
         $jenis = $_POST['jenis'];
         $nama_produk = $_POST['nama_produk'];

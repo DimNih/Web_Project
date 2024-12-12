@@ -73,3 +73,4 @@ function showRegister() {
     document.getElementById('login-form').classList.add('hidden');
     document.getElementById('register-form').classList.remove('hidden');
 }
+

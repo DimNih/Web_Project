@@ -97,6 +97,7 @@ include '../php/data/pembeli.php';
                                         <nav class="sb-sidenav-menu-nested nav">
                                             <a class="nav-link" href="login-admin.php">Login</a>
                                             <a class="nav-link" href="password.html">Forgot Password</a>
+                                            <a class="nav-link" href="service.php">Service Customer</a>
                                         </nav>
                                 </nav>
                                 </div>
@@ -108,6 +109,10 @@ include '../php/data/pembeli.php';
                     </div>
                 </nav>
             </div>
+
+
+
+            
             <div id="layoutSidenav_content">
     <main>
         <div class="container-fluid">
@@ -135,7 +140,7 @@ include '../php/data/pembeli.php';
                         <div class="col-xl-4 col-md-6 mb-4">
                             <div class="card bg-success text-white">
                                 <div class="card-body">
-                                    Pendapatan: <strong>Rp <?php echo number_format($total_pendapatan, 2, ',', '.'); ?></strong>
+                                    Pendapatan: <strong>Rp<?php echo number_format($total_pendapatan, 2, ',', '.'); ?></strong>
                                 </div>
                                 <div class="card-footer d-flex align-items-center justify-content-between">
                                     <a class="small text-white stretched-link" href="#">View Details</a>

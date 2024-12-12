@@ -31,7 +31,6 @@ if (isset($_POST['REGISTER'])) {
 
     $fileName = null;
 
-    // Untuk Uploud ke img folder
     if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == 0) {
         $nama_Folder = "../Assets/about/profil/";
         $target_file = $nama_Folder . basename($_FILES["profile_picture"]["name"]);

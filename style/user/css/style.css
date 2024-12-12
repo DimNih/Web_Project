@@ -527,12 +527,14 @@ ol {
 	padding: 26px 0 25px;
 }
 
-.header__menu ul li {
-	list-style: none;
-	display: inline-block;
-	margin-right: 45px;
-	position: relative;
+.header__menu ul {
+    display: flex;       
+    justify-content: space-evenly;  
+    list-style-type: none;      
+    padding: 0;                  
+    margin: 0;                 
 }
+
 
 .header__menu ul li.active a:after {
 	-webkit-transform: scale(1);
@@ -631,8 +633,8 @@ ol {
 }
 
 .header__nav__option img:hover {
-    transform: scale(1.1); /* Zoom effect */
-    filter: blur(2px) brightness(0.8); /* Background blur and dimming */
+    transform: scale(1.1); 
+    filter: blur(2px) brightness(0.8); 
 }
 
 
@@ -1098,7 +1100,8 @@ ol {
 }
 
 .product__item__pic {
-	height: 260px;
+	height: 200px;
+width: 200px;
 	position: relative;
 	background-position: center center;
 }
@@ -1172,6 +1175,7 @@ ol {
 	background: #ffffff;
 	padding: 10px;
 	display: inline-block;
+	height: 100px;
 }
 
 .product__item__text {
@@ -3369,9 +3373,6 @@ ol {
 	padding: 14px 35px;
 }
 
-/*---------------------
-  Map
------------------------*/
 
 .map {
 	height: 50px;
@@ -3380,10 +3381,6 @@ ol {
 .map hero__social {
 	width: 100%;
 }
-
-/*---------------------
-  Contact
------------------------*/
 
 .contact__text .section-title {
 	text-align: left;
@@ -3496,7 +3493,6 @@ ol {
 	}
 }
 
-/* Medium Device = 1200px */
 
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 	.categories__text h2 {
@@ -3516,7 +3512,6 @@ ol {
 	}
 }
 
-/* Tablet Device = 768px */
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
 	.header__menu ul li {
@@ -4038,3 +4033,55 @@ ol {
 		  background-color: #e64c29;
 	  }
 
+
+.chat-container {
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	background-color: #e9ecef;
+	overflow-y: auto;
+	font-family: 'Arial', sans-serif;
+	font-size: 14px;
+	display: flex;
+	flex-direction: column; 
+	padding: 15px;
+  }
+  
+  .message {
+	padding: 10px;
+	border-radius: 15px;
+	margin-bottom: 8px;
+	max-width: 75%;
+	display: inline-block;
+	clear: both;
+  }
+  
+  .user-message {
+	background-color:  #ffffff;
+	align-self: flex-start; 
+	margin-right: auto; 
+  }
+  
+  .admin-message {
+	background-color: #d1f7c4 ;
+	align-self: flex-end; 
+	border: 1px solid #ddd;
+	margin-left: auto; 
+  }
+  
+  #send-message {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+  }
+  
+  #attach-file {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 50px;
+  }
+  
+.logo-fav{
+border-radius: 100px;
+
+}

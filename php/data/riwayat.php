@@ -13,10 +13,11 @@ JOIN penjualan p ON bm.id_produk = p.id
 
 // Query untuk mengambil data barang keluar
 $queryBarangKeluar = "
-SELECT p.nama_produk, bk.jumlah, bk.tanggal_keluar, bk.id_keluar
+SELECT p.nama_produk, bk.jumlah, bk.tanggal_keluar, bk.id_produk
 FROM barang_keluar bk
-JOIN penjualan p ON bk.id_keluar = p.id
+JOIN penjualan p ON bk.id_produk = p.id
 ";
+
 
 // Menampilkan data admin dan saldo jika admin sudah login
 if (isset($_SESSION['admin_id'])) {
@@ -74,7 +75,7 @@ if ($resultBarangKeluar && mysqli_num_rows($resultBarangKeluar) > 0) {
             'jumlah' => $row['jumlah'],
             'tanggal' => $row['tanggal_keluar'],
             'status' => 'Keluar',
-            'id' => $row['id_keluar']
+            'id' => $row['id_produk']
         ];
     }
 }

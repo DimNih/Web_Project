@@ -11,7 +11,7 @@ include '../php/data/barang_keluar.php';
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Admin</title>
-        <link href="../style/database/database.css?v=2" rel="stylesheet" />
+        <link href="../style/database/database.css?v=3" rel="stylesheet" />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
     </head>
@@ -96,6 +96,8 @@ include '../php/data/barang_keluar.php';
                                         <nav class="sb-sidenav-menu-nested nav">
                                             <a class="nav-link" href="login-admin.php">Login</a>
                                             <a class="nav-link" href="password.html">Forgot Password</a>
+                                            <a class="nav-link" href="service.php">Service Customer</a>
+                                        
                                         </nav>
                                 </nav>
                                 </div>
@@ -107,6 +109,9 @@ include '../php/data/barang_keluar.php';
                     </div>
                 </nav>
             </div>
+
+
+            
             <div id="layoutSidenav_content">
                 <main>
                 
@@ -121,6 +126,8 @@ include '../php/data/barang_keluar.php';
 
                             <button class="btn btn-primary" onclick="document.getElementById('tambah').style.display='block';">TAMBAH BARANG KELUAR</button>
 
+
+                            
 <div id="tambah" class="form-container" style="display:none;"> 
     <form action="" method="POST" class="mt-3">
         <div class="form-group">
@@ -148,6 +155,8 @@ include '../php/data/barang_keluar.php';
     </form>
 </div>
 
+
+
 <table class="table table-bordered mt-4">
     <thead class="thead-dark">
         <tr align="center">
@@ -160,6 +169,8 @@ include '../php/data/barang_keluar.php';
     </thead>
     <tbody>
         <?php
+
+
         $no = 1;
         $query = mysqli_query($koneksi, "SELECT bk.id_keluar, p.nama_produk, bk.tanggal_keluar, bk.jumlah, bk.tujuan_keluar 
                                         FROM barang_keluar bk 

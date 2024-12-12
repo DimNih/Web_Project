@@ -1,7 +1,6 @@
 <?php
-session_start();
 include '../connection/koneksi.php';
-
+session_start();
 $popupMessage = "";
 $balance = 0;
 $userPhone = "";
@@ -85,6 +84,7 @@ if (isset($_GET['id'])) {
                         $updateSaldoQuery = "UPDATE user SET saldo_user = '$newBalance' WHERE id = '$userId'";
 
                         if (mysqli_query($koneksi, $updateProdukQuery) && mysqli_query($koneksi, $updateKeranjangQuery) && mysqli_query($koneksi, $updateSaldoQuery)) {
+                            // Insert into Proses_beli or Update to mark the product as sold
                             $queryProsesBeli = "SELECT * FROM Proses_beli WHERE id_beli='$id'";
                             $resultProsesBeli = mysqli_query($koneksi, $queryProsesBeli);
 
@@ -92,14 +92,19 @@ if (isset($_GET['id'])) {
                                 $updateProsesBeliQuery = "UPDATE Proses_beli 
                                                           SET Nama_Pembeli = '$namaAkun', 
                                                               Saldo_Dapat = Saldo_Dapat + '$totalHarga', 
-                                                              Jumlah_Beli = Jumlah_Beli + '$beli' 
+                                                              Jumlah_Beli = Jumlah_Beli + '$beli', 
+                                                              Status = 'terjual' 
                                                           WHERE id_beli = '$id'";
                                 mysqli_query($koneksi, $updateProsesBeliQuery);
                             } else {
-                                $insertProsesBeliQuery = "INSERT INTO Proses_beli (id_beli, Nama_Pembeli, Saldo_Dapat, Jumlah_Beli, Tanggal) 
-                                                          VALUES ('$id', '$namaAkun', '$totalHarga', '$beli', CURRENT_TIMESTAMP)";
+                                $insertProsesBeliQuery = "INSERT INTO Proses_beli (id_beli, Nama_Pembeli, Saldo_Dapat, Jumlah_Beli, Tanggal, Status) 
+                                                          VALUES ('$id', '$namaAkun', '$totalHarga', '$beli', CURRENT_TIMESTAMP, 'terjual')";
                                 mysqli_query($koneksi, $insertProsesBeliQuery);
                             }
+
+                            // Mark the product as sold in the penjualan table
+                            $updatePenjualanQuery = "UPDATE penjualan SET status = 'terjual' WHERE id = '$produkId'";
+                            mysqli_query($koneksi, $updatePenjualanQuery);
 
                             $_SESSION['balance'] = $newBalance;
                             header("Location: ../User/shop.php");
